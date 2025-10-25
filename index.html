@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width>, initial-scale=1.0">
+    <title>Document</title>
+    <link rel = "stylesheet" href ="styles.css">
+
+</head>
+<body>
+    <header>
+        <h1>"Mi blog personal en tecnologias"</h1>
+        <nav>
+            <ul>
+                <li><a href = "#">Inicio</a></li>
+                <li><a href = "#">Artículos</a></li>
+                <li><a href = "#">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>Ultimos Articulos</h2>
+            <p>Aquí te comparto mas pensamientos sobre el desarrollo web y las últimas novedades en programación. ¡Siempre aprendiendo!</p>
+           <h3>HTML Básico: Los fundamentos</h3>
+           <p>HTML es la estructura de la web. Sin él, no hay nada. Es importante entender la semántica</p>
+           <img src = "img/html5Image.png" class = "imghtml">
+           <h4>Simbolo de HTML y CSS</h4>
+            <ol>
+                <li><p>Doctype y la estructura básica</p></li>
+                <li><p>Etiquetas de encabezado(h1-h6) y párrafo(p)</p></li>
+                <li><p>Uso de listas y enlaces</p></li>
+            </ol>
+            <h3>El Poder del CSS</h3>
+            <p>Css nos da la capacidad de hacer que nuestras páginas se vean geniales y sean responsive</p>
+            <br>
+            <a class = "aprendeMas" href="#">Aprende más sobre CSS en MDN</a>
+            <p>Mira un ejemplo de una lista de tareas que queremos hacer con CSS</p>
+            <ul>
+                 <li><p>Cambiar el color del Fondo</p></li>
+                <li><p>Centrar Elementos importantes</p></li>
+                <li><p>Diseñar el menú de navegación</p></li>
+            </ul>
+            <h4>Simbolo de CSS</h4>
+            <img src="img/cssImage.png" class="imghtml">
+          </section>
+     
+             <aside>
+            <h3>Suscripción y Contacto</h3>
+            <p>¡No te pierdas mis proximos posts! Suscribete a mi boletín semanal.</p>
+        
+       
+           <form action="guardar.php" method="POST">
+  <div class="formGroup">
+    <p class="formStyle"><strong>Nombre: </strong><input type="text" class="txtForm" name="name" placeholder="Nombre" required></p>
+    <p class="formStyle"><strong>Apellido Paterno: </strong><input type="text" class="txtForm" name="apellidoPaterno" placeholder="Apellido Paterno" required></p>
+    <p class="formStyle"><strong>Apellido Materno: </strong><input type="text" class="txtForm" name="apellidoMaterno" placeholder="Apellido Materno" required></p>
+    <p class="formStyle"><strong>Contraseña: </strong><input type="password" class="txtForm" name="password"></p>
+    <p class="formStyle"><strong>Email: </strong><input type="email" class="txtForm" name="email"></p>
+    <p class="formStyle"><strong>Teléfono: </strong><input type="tel" class="txtForm" name="telefono"></p>
+  </div>
+
+  <p><input type="radio" name="Sexo" value="Hombre"><strong>Hombre</strong></p>
+  <p><input type="radio" name="Sexo" value="Mujer"><strong>Mujer</strong></p>
+  <p><input type="radio" name="Sexo" value="Prefiero no decirlo"><strong>Prefiero no decirlo</strong></p>
+
+  <button type="submit" class="suscribirmeButton">Aceptar</button>
+  <button type="reset" class="suscribirmeButton">Limpiar</button>
+  <button type="submit" name="accion" value="eliminar" class="suscribirmeButton">Eliminar</button>
+</form>
+
+        </aside>
+    </main>
+    <footer>
+               @CopyRigth No permitido 
+               Desarrollado por Dylan Estuardo Flores Sagahón 
+    </footer>
+</body>
+</html> 

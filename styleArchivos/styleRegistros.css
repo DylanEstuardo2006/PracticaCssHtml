@@ -48,3 +48,25 @@ main
  justify-content: center;
  align-items: flex-start;
 }
+table
+{
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 20px;
+}
+th, td 
+{
+  border-width: 1;
+  border-style: solid;  
+  border-color:  blue;
+  text-align: center; 
+  padding: 20px;
+}
+.accionesButton
+{
+  border-radius: 10px;
+  background-color: black;
+  color: white;
+  padding: 8px 12px;
+  text-decoration: none;
+}

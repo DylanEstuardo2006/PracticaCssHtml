@@ -16,11 +16,11 @@
      $sexo = $_POST['Sexo'];
      
 
-     $sql = "INSERT INTO usuario (nombre, apellidoPaterno, apellidoMaterno, email, contrasenia, telefono, sexo) VALUES ('$nombre', '$apellidoPaterno', '$apellidoMaterno', '$email','$password' ,'$telefono' ,'$sexo')";
+     $sql = "INSERT INTO usuarios (nombre, apellidoPaterno, apellidoMaterno, email, contrasenia, telefono, sexo) VALUES ('$nombre', '$apellidoPaterno', '$apellidoMaterno', '$email','$password' ,'$telefono' ,'$sexo')";
 
       if($conn -> query($sql) === true)
       {
-        echo "Inserción exitosa";
+        header("Location: registros.php");
       }
    }
    else

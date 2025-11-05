@@ -41,9 +41,9 @@ nav a:hover /* a:hover*/
 main 
 {
  display: flex;
- max-width: 1400px;
- margin: 20px auto;
- padding: 10;
+ max-width: 1600px;
+ margin: 15px auto;
+ padding: 10PX;
  gap: 30px;
  justify-content: center;
  align-items: flex-start;
@@ -53,6 +53,7 @@ table
   border-collapse: collapse;
   width: 100%;
   margin-top: 20px;
+  table-layout: auto; /* Permite que las columnas se ajusten al contenido */
 }
 th, td 
 {
@@ -60,7 +61,13 @@ th, td
   border-style: solid;  
   border-color:  blue;
   text-align: center; 
-  padding: 20px;
+  padding: 10px;
+}
+/* Columna de acciones más ancha para que los botones no se sobreescriban */
+th:last-child, td:last-child 
+{
+  min-width: 180px; /* Ajusta este valor según tus necesidades */
+  white-space: nowrap; /* Evita que el contenido se divida en varias líneas */
 }
 .accionesButton
 {
@@ -69,4 +76,7 @@ th, td
   color: white;
   padding: 8px 12px;
   text-decoration: none;
+  margin: 0 5px;
+    display: inline-block; /* Asegura que los botones se comporten correctamente */
+  cursor: pointer;
 }

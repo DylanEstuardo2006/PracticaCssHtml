@@ -48,8 +48,9 @@
                 <td><?php echo $usuario['email']; ?></td>
                 <td><?php echo $usuario['telefono']; ?></td>
                 <td>
-                    <a class = "accionesButton" href="editar.php?id=<?php echo $usuario['idUsuario']; ?>">Editar</a>
-                    <a class = "accionesButton" href="eliminar.php?id=<?php echo $usuario['idUsuario']; ?>">Eliminar</a>
+                    <a class = "accionesButton" href="actualizar.php?id=<?php echo $usuario['idUsuario']; ?>">Actualizar</a>
+                    <a class = "accionesButton" href="eliminar.php?id=<?php echo $usuario['idUsuario']; ?>" 
+                    onclick = "return confirm('¿Seguro que deseas eliminar este usuario ?');">Eliminar</a>
                 </td>
             </tr>
         <?php

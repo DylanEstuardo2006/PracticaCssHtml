@@ -13,7 +13,6 @@
         <nav>
             <ul>
                 <li><a href = "phpArchivos/registros.php">Registros</a></li>
-                <li><a href = "#"></a></li>
                 <li><a href = "#">Contacto</a></li>
             </ul>
         </nav>
@@ -51,21 +50,22 @@
         
        
            <form action="phpArchivos/guardar.php" method="POST">
-    <div class="formGroup">
-    <p class="formStyle"><strong>Nombre: </strong><input type="text" class="txtForm" name="name" placeholder="Nombre" required></p>
-    <p class="formStyle"><strong>Apellido Paterno: </strong><input type="text" class="txtForm" name="apellidoPaterno" placeholder="Apellido Paterno" required></p>
-    <p class="formStyle"><strong>Apellido Materno: </strong><input type="text" class="txtForm" name="apellidoMaterno" placeholder="Apellido Materno" required></p>
-    <p class="formStyle"><strong>Contraseña: </strong><input type="password" class="txtForm" name="password"></p>
-    <p class="formStyle"><strong>Email: </strong><input type="email" class="txtForm" name="email"></p>
-    <p class="formStyle"><strong>Teléfono: </strong><input type="tel" class="txtForm" name="telefono"></p>
+    <div class="formGroup"> 
+    <p class="formStyle"><strong>Nombre: </strong><input type="text" class="txtForm" name="name" placeholder="Nombre" pattern="^[A-Za-zÁÉÍÓÚáéíóúÑñ]+(?:\s[A-Za-zÁÉÍÓÚáéíóúÑñ]+)*$"  title="Solo letras y espacios. Mínimo 2 y máximo 50 caracteres." required></p>
+    <p class="formStyle"><strong>Apellido Paterno: </strong><input type="text" class="txtForm" name="apellidoPaterno" placeholder="Apellido Paterno" pattern="^[A-Za-zÁÉÍÓÚáéíóúÑñ ]{2,50}$" title="Solo letras y espacios. Mínimo 2 y máximo 50 caracteres." required></p>
+    <p class="formStyle"><strong>Apellido Materno: </strong><input type="text" class="txtForm" name="apellidoMaterno" placeholder="Apellido Materno" pattern="^[A-Za-zÁÉÍÓÚáéíóúÑñ ]{2,50}$" title="Solo letras y espacios. Mínimo 2 y máximo 50 caracteres." required></p>
+    <p class="formStyle"><strong>Email: </strong><input type="email" class="txtForm" name="email" placeholder = "email" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" ></p>
+     <p class="formStyle"><strong>Contraseña: </strong><input type="password" class="txtForm" name="password" placeholder="Contraseña"  pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@$!%*?&]{8,15}$"
+         title="Debe tener al menos 8 caracteres, incluyendo letras y números. Sin espacios."></p>
+    <p class="formStyle"><strong>Teléfono: </strong><input type="tel" class="txtForm" name="telefono" placeholder="Teléfono" pattern="^[0-9]{10}$"></p>
   </div>
 
   <p><input type="radio" name="Sexo" value="Hombre"><strong>Hombre</strong></p>
   <p><input type="radio" name="Sexo" value="Mujer"><strong>Mujer</strong></p>
-  <p><input type="radio" name="Sexo" value="Prefiero no decirlo"><strong>Prefiero no decirlo</strong></p>
+  <p><input type="radio" name="Sexo" value="Prefiero no Decirlo"><strong>Prefiero no Decirlo</strong></p>
 
   <button type="submit" class="suscribirmeButton">Aceptar</button>
-  <button type="reset" class="suscribirmeButton">Limpiar</button>
+  <button type="reset" class="suscribirmeButton">Limpiar </button>
   <button type="submit" name="accion" value="eliminar" class="suscribirmeButton">Eliminar</button>
 </form>
 

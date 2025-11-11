@@ -24,7 +24,9 @@
         </nav>
     </header>
    <main>
-    <?php if($resultado -> num_rows > 0)  ?>
+    <?php if($resultado -> num_rows > 0)  
+     {
+    ?>
     <table>
        <thead>
                 <th>Nombre</th>
@@ -37,6 +39,7 @@
        </thead>
        <tbody>
         <?php
+      
           while($usuario = $resultado -> fetch_assoc())
           {
         ?>
@@ -54,7 +57,9 @@
                 </td>
             </tr>
         <?php
-          }
+          
+        }
+      }
           else 
           {
            

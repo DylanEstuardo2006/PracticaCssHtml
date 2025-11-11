@@ -1,35 +1,4 @@
 <?php
-include_once 'conexion.php';
-
-// --- Procesamos actualización si se envió el formulario ---
-if (isset($_POST['actualizar'])) {
-
-    $idUsuario = $_POST['idUsuario'];
-    $nombre = $_POST['nombre'];
-    $apellidoPaterno = $_POST['apellidoPaterno'];
-    $apellidoMaterno = $_POST['apellidoMaterno'];
-    $sexo = $_POST['sexo'];
-    $email = $_POST['email'];
-    $telefono = $_POST['telefono'];
-
-    // Usar prepared statements para evitar SQL injection
-    $sqlUpdate = "UPDATE usuarios  SET nombre = ?,  apellidoPaterno = ?, apellidoMaterno = ?, sexo = ?, email = ?,telefono = ?  WHERE idUsuario = ?";
-    
-    $stmt = $conn->prepare($sqlUpdate);
-    $stmt->bind_param("ssssssi", $nombre, $apellidoPaterno, $apellidoMaterno, $sexo, $email, $telefono, $idUsuario);
-    
-    if ($stmt->execute()) {
-        echo "<script>
-                alert('Usuario actualizado correctamente');
-                window.location.href='registros.php';
-              </script>";
-        exit;
-    } else {
-        echo "Error al actualizar: " . $conn->error;
-    }
-}
-
-// --- Obtenemos datos del usuario para mostrar en el formulario ---
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
     
@@ -58,48 +27,35 @@ if (isset($_GET['id'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Actualizar usuario</title>
-    <link rel="stylesheet" href="../styleArchivos/styleRegistros.css">
+    <link rel="stylesheet" href="../styleArchivos/styleActualizar.css">
 </head>
 <body>
     <header>
         <h1>Actualizar Usuario</h1>
         <nav>
             <ul>
-                <li><a href="../php/registros.php">Volver</a></li>
+                <li><a href="registros.php">Volver</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
-        <form action="actualizar.php" method="POST">
-            <input type="hidden" name="idUsuario" value="<?php echo $usuario['idUsuario']; ?>">
+    <section>
+        <form action="ejecutarEditar.php" method="POST">
+        <input type="hidden" name="idUsuario" value="<?php echo $usuario['idUsuario']; ?>">
+            <p class="formStyle"><strong>Nombre: </strong><input type="text" class="txtForm" name="name"  value = "<?php echo $usuario['nombre']?>" pattern="^[A-Za-zÁÉÍÓÚáéíóúÑñ]+(?:\s[A-Za-zÁÉÍÓÚáéíóúÑñ]+)*$"  title="Solo letras y espacios. Mínimo 2 y máximo 50 caracteres." required></p>
+    <p class="formStyle"><strong>Apellido Paterno: </strong><input type="text" class="txtForm" name="apellidoPaterno" value = "<?php echo $usuario['apellidoPaterno']?>"  pattern="^[A-Za-zÁÉÍÓÚáéíóúÑñ ]{2,50}$" title="Solo letras y espacios. Mínimo 2 y máximo 50 caracteres." required></p>
+    <p class="formStyle"><strong>Apellido Materno: </strong><input type="text" class="txtForm" name="apellidoMaterno" value = "<?php echo $usuario['apellidoMaterno']?>" pattern="^[A-Za-zÁÉÍÓÚáéíóúÑñ ]{2,50}$" title="Solo letras y espacios. Mínimo 2 y máximo 50 caracteres." required></p>
+    <p class="formStyle"><strong>Email: </strong><input type="email" class="txtForm" name="email" value = "<?php echo $usuario['email']?>" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" enabled></p>
+    <p class="formStyle"><strong>Teléfono: </strong><input type="tel" class="txtForm" name="telefono"  value = "<?php echo $usuario['telefono']?>"  pattern="^[0-9]{10}$"></p>
 
-            <table>
-                <thead>
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Apellido Paterno</th>
-                        <th>Apellido Materno</th>
-                        <th>Sexo</th>
-                        <th>Email</th>
-                        <th>Teléfono</th>
-                        <th>Acción</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><input type="text" name="nombre" value="<?php echo htmlspecialchars($usuario['nombre']); ?>" required></td>
-                        <td><input type="text" name="apellidoPaterno" value="<?php echo htmlspecialchars($usuario['apellidoPaterno']); ?>" required></td>
-                        <td><input type="text" name="apellidoMaterno" value="<?php echo htmlspecialchars($usuario['apellidoMaterno']); ?>"></td>
-                        <td><input type="text" name="sexo" value="<?php echo htmlspecialchars($usuario['sexo']); ?>"></td>
-                        <td><input type="email" name="email" value="<?php echo htmlspecialchars($usuario['email']); ?>" required></td>
-                        <td><input type="text" name="telefono" value="<?php echo htmlspecialchars($usuario['telefono']); ?>"></td>
-                        <td>
-                            <button type="submit" name="actualizar" class="accionesButton">Actualizar</button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+  <p><input type="radio" name="Sexo" value="Hombre" <?php if ( $usuario['sexo'] == "Hombre"): ?>  checked  <?php endif; ?>><strong>Hombre</strong></p>
+  <p><input type="radio" name="Sexo" value="Mujer"  <?php if ( $usuario['sexo'] == "Mujer"): ?>  checked  <?php endif; ?>><strong>Mujer</strong></p>
+  <p><input type="radio" name="Sexo" value ="Prefiero no Decirlo" <?php if ( $usuario['sexo'] == "Prefiero no Decirlo"): ?>  checked  <?php endif; ?>><strong>Prefiero no Decirlo</strong></p>
+
+  <button type="submit" class="suscribirmeButton">Aceptar</button>
+  <button type="reset" class="suscribirmeButton">Limpiar </button>
+  </section> 
         </form>
     </main>
 </body>

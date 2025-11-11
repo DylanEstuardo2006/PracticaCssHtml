@@ -1,5 +1,8 @@
 <?php
-if (isset($_GET['id'])) {
+include_once 'conexion.php';
+
+if (isset($_GET['id']))
+ {
     $id = $_GET['id'];
     
     // Usar prepared statement
@@ -20,7 +23,6 @@ if (isset($_GET['id'])) {
     exit;
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -43,7 +45,7 @@ if (isset($_GET['id'])) {
     <section>
         <form action="ejecutarEditar.php" method="POST">
         <input type="hidden" name="idUsuario" value="<?php echo $usuario['idUsuario']; ?>">
-            <p class="formStyle"><strong>Nombre: </strong><input type="text" class="txtForm" name="name"  value = "<?php echo $usuario['nombre']?>" pattern="^[A-Za-zÁÉÍÓÚáéíóúÑñ]+(?:\s[A-Za-zÁÉÍÓÚáéíóúÑñ]+)*$"  title="Solo letras y espacios. Mínimo 2 y máximo 50 caracteres." required></p>
+   <p class="formStyle"><strong>Nombre: </strong><input type="text" class="txtForm" name="nombre" value = "<?php echo $usuario['nombre'] ?>" pattern="^[A-Za-zÁÉÍÓÚáéíóúÑñ]+(?:\s[A-Za-zÁÉÍÓÚáéíóúÑñ]+)*$"  title="Solo letras y espacios. Mínimo 2 y máximo 50 caracteres." required></p>
     <p class="formStyle"><strong>Apellido Paterno: </strong><input type="text" class="txtForm" name="apellidoPaterno" value = "<?php echo $usuario['apellidoPaterno']?>"  pattern="^[A-Za-zÁÉÍÓÚáéíóúÑñ ]{2,50}$" title="Solo letras y espacios. Mínimo 2 y máximo 50 caracteres." required></p>
     <p class="formStyle"><strong>Apellido Materno: </strong><input type="text" class="txtForm" name="apellidoMaterno" value = "<?php echo $usuario['apellidoMaterno']?>" pattern="^[A-Za-zÁÉÍÓÚáéíóúÑñ ]{2,50}$" title="Solo letras y espacios. Mínimo 2 y máximo 50 caracteres." required></p>
     <p class="formStyle"><strong>Email: </strong><input type="email" class="txtForm" name="email" value = "<?php echo $usuario['email']?>" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" enabled></p>
@@ -55,8 +57,9 @@ if (isset($_GET['id'])) {
 
   <button type="submit" class="suscribirmeButton">Aceptar</button>
   <button type="reset" class="suscribirmeButton">Limpiar </button>
+   </form>
   </section> 
-        </form>
+       
     </main>
 </body>
 </html>

@@ -2,13 +2,11 @@
 include_once 'conexion.php';
 
 // --- Procesamos actualización si se envió el formulario ---
-if (isset($_POST['actualizar'])) 
-    {
      if($_POST['Sexo'] == "")
   {
        echo "<script>
                    alert('❌ Por favor, selecciona un sexo valido.');
-                   window.location='../index.html';
+                   window.location='actualizar.php';
                  </script>";
   }
  
@@ -26,13 +24,15 @@ if (isset($_POST['actualizar']))
     $stmt = $conn->prepare($sqlUpdate);
     $stmt->bind_param("ssssssi", $nombre, $apellidoPaterno, $apellidoMaterno, $sexo, $email, $telefono, $idUsuario);
     
-    if ($stmt->execute()) {
+    if ($stmt->execute()) 
+      {
         echo "<script>
                 alert('Usuario actualizado correctamente');
                 window.location.href='registros.php';
               </script>";
         exit;
-    } else {
+    } else 
+    {
         echo "Error al actualizar: " . $conn->error;
     }
-}
+?>

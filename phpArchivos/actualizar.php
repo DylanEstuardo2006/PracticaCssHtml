@@ -3,6 +3,7 @@ include_once 'conexion.php';
 
 // --- Procesamos actualización si se envió el formulario ---
 if (isset($_POST['actualizar'])) {
+
     $idUsuario = $_POST['idUsuario'];
     $nombre = $_POST['nombre'];
     $apellidoPaterno = $_POST['apellidoPaterno'];
@@ -12,14 +13,7 @@ if (isset($_POST['actualizar'])) {
     $telefono = $_POST['telefono'];
 
     // Usar prepared statements para evitar SQL injection
-    $sqlUpdate = "UPDATE usuarios 
-                  SET nombre = ?,
-                      apellidoPaterno = ?,
-                      apellidoMaterno = ?,
-                      sexo = ?,
-                      email = ?,
-                      telefono = ?
-                  WHERE idUsuario = ?";
+    $sqlUpdate = "UPDATE usuarios  SET nombre = ?,  apellidoPaterno = ?, apellidoMaterno = ?, sexo = ?, email = ?,telefono = ?  WHERE idUsuario = ?";
     
     $stmt = $conn->prepare($sqlUpdate);
     $stmt->bind_param("ssssssi", $nombre, $apellidoPaterno, $apellidoMaterno, $sexo, $email, $telefono, $idUsuario);

@@ -55,6 +55,14 @@
             </tr>
         <?php
           }
+          else 
+          {
+           
+           ?>
+            <h2>No existen Registros </h2>
+            <?php
+            
+          }
         ?>
         </tbody>
       </table>
